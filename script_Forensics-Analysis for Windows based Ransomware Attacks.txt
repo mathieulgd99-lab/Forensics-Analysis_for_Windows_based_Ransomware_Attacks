@@ -1,0 +1,92 @@
+Here is a complete script in English tailored for your presentation. I have adopted a "Project Proposal/Kick-off" tone ("We will," "Our goal is") as you requested.
+
+General Advice for the Oral Presentation:
+
+Don't read the slides: The audience can read. Explain why the information on the slide is important.
+
+Be confident: Even if you haven't done the analysis yet, show that you have a solid plan.
+
+Introduction & Theory
+Slide 1 & 2: Title Slide "Good morning/afternoon everyone. We are [Team Name], and today we are presenting our project on 'The Rise of Ransomware.' We will be covering the theory behind these attacks and our plan for a forensic analysis of a Windows-based ransomware attack."
+
+Slide 3: What is a ransomware? "To start, let's define our subject. Ransomware is a specific type of malware designed for extortion. It infiltrates a system, encrypts valuable files, and demands a cryptocurrency payment to unlock them. It is currently one of the most profitable—and therefore most common—forms of cybercrime."
+
+Slide 4: The two faces of ransomwares "Not all ransomware works the same way. We generally categorize them into two types:
+
+First, Crypto Ransomware: This is the most common. It targets your data—documents, photos, spreadsheets—but leaves the operating system running so you can pay the ransom.
+
+Second, Locker Ransomware: This is more aggressive. It locks you out of the entire operating system, often displaying a full-screen warning, making the device completely unusable."
+
+Slide 5: The Ransomware Attack Lifecycle "To analyze an attack, we must understand its lifecycle. It happens in four phases:
+
+Preparation: The attacker builds the malware.
+
+Distribution: It spreads via phishing or bad websites.
+
+Infection: This is the breach point where the malware enters the system.
+
+Assault: Finally, the malware activates, encrypts files, and contacts the attacker's server."
+
+Methodology
+Slide 6: The investigator's toolkit "For our project, we will use three analysis methodologies:
+
+Static Analysis: Examining the code without running it.
+
+Dynamic Analysis: Watching the malware run in a safe environment.
+
+Hybrid Analysis: Combining both for maximum accuracy."
+
+Slide 7: Static analysis "Think of Static Analysis like reading a recipe. We look at the code structure and signatures to understand what the malware might do, without actually cooking the meal. It is fast and safe, but it can be fooled if the malware code is obfuscated or packed."
+
+Slide 8: Dynamic analysis "Dynamic Analysis is where we actually 'bake the cake.' We run the malware in a sandbox to see its real behavior. It reveals network connections and file changes. However, it is riskier and requires a strictly controlled environment so the virus doesn't escape."
+
+Project Scope & Implementation Plan
+Slide 9: Uses Cases (Transition) "Now that we have covered the theory, let's move on to our specific project scope and the practical use case we have selected."
+
+Slide 10: Research Scope: 4 Ransomware Families "Our research focuses on four major families:
+
+Onion Ransomware: Our main case study, chosen for its use of the Tor network and AES encryption.
+
+WannaCry: Famous for its 'worm' capabilities and the kill-switch.
+
+Locky: Known for spreading via malicious email macros.
+
+Ryuk: Which targets large enterprises in 'Big Game Hunting' attacks."
+
+Slide 11: Use Case 1 - Onion Ransomware "For the practical implementation of this project, we will focus specifically on Onion Ransomware. We have obtained a real sample from a dataset, and we will perform a full forensic reconstruction of this attack."
+
+Slide 12: Lab Architecture & Safety "Safety is our priority. We have designed an isolated architecture:
+
+We will use Windows 10 Pro hosted on VirtualBox.
+
+Crucially, the Network Bridge will be disabled to protect the university network.
+
+We will use Write-Blockers to ensure we don't alter the evidence during our investigation."
+
+The Forensic Process (Step-by-Step)
+Slide 13: First detection "Our scenario begins with an incident report. The user claims their files are inaccessible and their wallpaper has changed to a ransom note. This is our starting point for the investigation."
+
+Slide 14: Image copy process "Our first technical step is Acquisition. We cannot work on the live machine. We will use FTK Imager to create a bit-by-bit copy of the infected drive. We will then verify the integrity of this image using MD5 or SHA-256 hashes to ensure the evidence is court-admissible."
+
+Slide 15: Image animation process and detection "Next, we perform Image Animation. We load the forensic copy into our VirtualBox environment. This allows us to turn the machine on safely. Our first goal here is to identify the source of infection, which we suspect is a file named JH67RdfgD.exe found in the downloads folder."
+
+Slide 16: Phase 1: Static Analysis Plan "Once the file is isolated, we start Phase 1: Static Analysis. We will not run the file yet. Instead, we will use VirusTotal to check its signature against global databases, and Strings to try and extract hidden text from the code, such as Bitcoin wallet addresses or URLs."
+
+Slide 17: Phase 2: Dynamic Analysis Plan "Phase 2 is Dynamic Analysis. We will execute the malware in our sandbox. Using tools like Process Explorer and RegShot, we aim to observe:
+
+Persistence: Does it add itself to the Registry to start automatically?
+
+Anti-Forensics: Does it delete system logs to hide its tracks?"
+
+Slide 18: Network Forensics Strategy "Finally, the Network Forensics phase. This is challenging because Onion Ransomware uses the Tor Network. We will use Wireshark to capture TCP traffic. Our goal is to filter for DNS queries ending in .onion and attempt to trace the IP address of the Command & Control server, which we suspect is located in Singapore."
+
+Conclusion
+Slide 19: Expected Deliverables "By the end of this project, we will deliver:
+
+A complete Forensic Analysis Report.
+
+A list of Indicators of Compromise (IOCs) like hashes and IPs to help detection.
+
+A Mitigation Guide focusing on backup strategies to prevent future data loss."
+
+Slide 20 & 21: Thank You "This concludes our project proposal. We are ready to begin the analysis phase. Thank you for your attention, and we are happy to answer any questions."
